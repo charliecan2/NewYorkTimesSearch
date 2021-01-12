@@ -14,7 +14,18 @@ $(document).ready(function () {
       url: queryURL,
       method: "GET",
     }).then(function(response){
-        console.log(response);
+        console.log(response.response);
+        var titleDiv = $("<div>");
+        titleDiv.text("Title: "+ response.response.docs[0].headline.main);
+        $("#articleContents").append(titleDiv);
+
+        var authorDiv = $("<div>");
+        authorDiv.text(response.response.docs[0].byline.original);
+        $("#articleContents").append(authorDiv);
+
+        var snippet = $("<br><div>");
+        snippet.text("Preview: " + response.response.docs[0].snippet);
+        $("#articleContents").append(snippet);
     });
   });
 });
