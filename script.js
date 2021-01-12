@@ -3,12 +3,12 @@ $(document).ready(function () {
   searchButton.on("click", function (event) {
     event.preventDefault();
     
-    var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=election&api-key=q8IV2ARGajfzJ3x9bFZ5INIEnegpbvk5";
-
     var searchTerm = $("#searchTerm").val();
     var startYear = $("#startYear").val();
     var endYear = $("#endYear").val();
     var numRecords = $("#numRecords").val();
+
+    var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + searchTerm + "&api-key=q8IV2ARGajfzJ3x9bFZ5INIEnegpbvk5";
 
     $.ajax({
       url: queryURL,
