@@ -15,7 +15,8 @@ $(document).ready(function () {
       method: "GET",
     }).then(function(response){
         console.log(response.response);
-        var titleDiv = $("<div>");
+        var titleDiv = $("<a>");
+        titleDiv.attr("href", response.response.docs[0].web_url);
         titleDiv.text("Title: "+ response.response.docs[0].headline.main);
         $("#articleContents").append(titleDiv);
 
