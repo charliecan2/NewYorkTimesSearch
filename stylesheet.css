@@ -3,7 +3,11 @@ body {
 }
 
 .jumbotron {
-    background-color: #dbe9f4
+    background-color: #dbe9f4;
     ;
 }
 
+#times-header {
+    display: flex;
+    justify-content: center;
+}
