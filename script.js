@@ -15,18 +15,28 @@ $(document).ready(function () {
       method: "GET",
     }).then(function(response){
         console.log(response.response);
-        var titleDiv = $("<a>");
-        titleDiv.attr("href", response.response.docs[0].web_url);
-        titleDiv.text("Title: "+ response.response.docs[0].headline.main);
-        $("#articleContents").append(titleDiv);
 
-        var authorDiv = $("<div>");
-        authorDiv.text(response.response.docs[0].byline.original);
-        $("#articleContents").append(authorDiv);
+        $("#articleContents").empty();
 
-        var snippet = $("<br><div>");
-        snippet.text("Preview: " + response.response.docs[0].snippet);
-        $("#articleContents").append(snippet);
+        for (i = 0; i < +numRecords; i++) {
+            var titleDiv = $("<a>");
+            titleDiv.attr("href", response.response.docs[i].web_url);
+            titleDiv.attr("target", "_blank");
+            titleDiv.text("Title: "+ response.response.docs[i].headline.main);
+            $("#articleContents").append(titleDiv);
+    
+            var authorDiv = $("<div>");
+            authorDiv.text(response.response.docs[i].byline.original);
+            $("#articleContents").append(authorDiv);
+    
+            var snippet = $("<br><div>");
+            snippet.text("Preview: " + response.response.docs[i].snippet);
+            $("#articleContents").append(snippet);
+
+            $("<br>").append("#articleContents");
+        }
+
+        
     });
   });
 });
